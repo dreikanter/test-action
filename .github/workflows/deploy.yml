@@ -24,7 +24,7 @@ jobs:
           SSH_TARGET_HOST: ${{secrets.SSH_TARGET_HOST}}
           SSH_PRIVATE_KEY: ${{secrets.SSH_PRIVATE_KEY}}
       - run: "cat ~/.ssh/known_hosts"  
-      - run: "ssh -i ~/.ssh/private.key root@$SSH_TARGET_HOST -- uname -a"
+      - run: "ssh -i ~/.ssh/private.key root@${{secrets.SSH_TARGET_HOST}} -- uname -a"
 #       - name: "Checkout Ansible playbooks"
 #         uses: "actions/checkout@v2"
 #         with:
