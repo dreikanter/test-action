@@ -23,8 +23,6 @@ jobs:
       volumes:
         - "feeder-ansible:/feeder-ansible"
     steps:
-      - run: "uname"
-      - run: "whoami"
-      - run: "sudo apt update"
-      - run: "sudo apt install ansible"
+      - run: "apt update"
+      - run: "apt install ansible"
       - run: "ansible --version"
