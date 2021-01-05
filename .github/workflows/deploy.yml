@@ -14,16 +14,23 @@ jobs:
           repository: "dreikanter/feeder-ansible"
           ref: "master"
           path: "feeder-ansible"
-  deploy:
-    name: "Execute deployment playbook"
-    needs: "checkout"
-    runs-on: "ubuntu-latest"
-    container:
-      image: "debian:buster-slim"
-      volumes:
-        - "feeder-ansible:/feeder-ansible"
-    steps:
-      - run: "apt-add-repository ppa:ansible/ansible"
+      - run: "uname -a && whoami"
       - run: "apt update"
-      - run: "apt install ansible"
-      - run: "ansible --version"
+# apt install software-properties-common
+# apt-add-repository --yes --update ppa:ansible/ansible
+# apt install ansible
+
+#   deploy:
+#     name: "Execute deployment playbook"
+#     needs: "checkout"
+#     runs-on: "ubuntu-latest"
+#     container:
+#       image: "debian:buster-slim"
+#       volumes:
+#         - "feeder-ansible:/feeder-ansible"
+#     steps:
+#       - run: "apt-add-repository ppa:ansible/ansible"
+#       - run: "apt update"
+#       - run: "apt install ansible"
+#       - run: "ansible --version"
+    
