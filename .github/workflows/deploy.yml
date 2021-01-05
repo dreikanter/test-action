@@ -6,7 +6,6 @@ on:
   workflow_dispatch:
 jobs:
   checkout:
-    name: "Checkout Ansible playbooks"
     runs-on: "ubuntu-latest"
     steps:
       - uses: "actions/checkout@v2"
@@ -14,23 +13,7 @@ jobs:
           repository: "dreikanter/feeder-ansible"
           ref: "master"
           path: "feeder-ansible"
-      - run: "uname -a && whoami"
-      - run: "apt update"
-# apt install software-properties-common
-# apt-add-repository --yes --update ppa:ansible/ansible
-# apt install ansible
-
-#   deploy:
-#     name: "Execute deployment playbook"
-#     needs: "checkout"
-#     runs-on: "ubuntu-latest"
-#     container:
-#       image: "debian:buster-slim"
-#       volumes:
-#         - "feeder-ansible:/feeder-ansible"
-#     steps:
-#       - run: "apt-add-repository ppa:ansible/ansible"
-#       - run: "apt update"
-#       - run: "apt install ansible"
-#       - run: "ansible --version"
-    
+      - run: "sudo apt-get update"
+      - run: "sudo apt install software-properties-common"
+      - run: "sudo apt-add-repository --yes --update ppa:ansible/ansible"
+      - run: "sudo apt install ansible"
