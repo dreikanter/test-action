@@ -23,6 +23,7 @@ jobs:
       volumes:
         - "feeder-ansible:/feeder-ansible"
     steps:
+      - run: "apt-add-repository ppa:ansible/ansible"
       - run: "apt update"
       - run: "apt install ansible"
       - run: "ansible --version"
