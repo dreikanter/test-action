@@ -2,24 +2,26 @@ name: Deploy
 on:
   push:
     branches:
-      - main
+      - "main"
   workflow_dispatch:
 jobs:
   checkout:
     name: "Checkout Ansible playbooks"
-    runs-on: ubuntu-latest
+    runs-on: "ubuntu-latest"
     steps:
-      - uses: actions/checkout@v2
+      - uses: "actions/checkout@v2"
         with:
-          repository: 'dreikanter/feeder-ansible'
-          ref: 'master'
-          path: 'feeder-ansible'
+          repository: "dreikanter/feeder-ansible"
+          ref: "master"
+          path: "feeder-ansible"
   deploy:
     name: "Execute deployment playbook"
-    runs-on: ubuntu-latest
+    needs: "checkout"
+    runs-on: "ubuntu-latest"
     container:
-      image: debian:buster-slim
-      volumes: feeder-ansible:/feeder-ansible
+      image: "debian:buster-slim"
+      volumes:
+        - "feeder-ansible:/feeder-ansible"
     steps:
       - run: "pwd"
       - run: "ls -al"
