@@ -30,4 +30,4 @@ jobs:
           ref: "chore/github_action"
           path: "feeder-ansible"
       - name: "Test Ansible access"
-        run: "ansible all --inventory=${{secrets.SSH_TARGET_HOST}}, -u root -m ping"
+        run: "ansible all --inventory=${{secrets.SSH_TARGET_HOST}}, --private-key=~/.ssh/private.key -u root -m ping"
