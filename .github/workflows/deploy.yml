@@ -14,3 +14,6 @@ jobs:
           repository: 'dreikanter/feeder-ansible'
           ref: 'master'
           path: 'feeder-ansible'
+      - run: "pwd"
+      - run: "ls -al"
+      - run: "ls -al feeder-ansible"
