@@ -14,6 +14,13 @@ jobs:
           repository: 'dreikanter/feeder-ansible'
           ref: 'master'
           path: 'feeder-ansible'
+  deploy:
+    name: "Execute deployment playbook"
+    runs-on: ubuntu-latest
+    container:
+      image: debian:buster-slim
+      volumes: feeder-ansible:/feeder-ansible
+    steps:
       - run: "pwd"
       - run: "ls -al"
-      - run: "ls -al feeder-ansible"
+      - run: "ls -al /"
