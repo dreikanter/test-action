@@ -1,12 +1,16 @@
 name: Deploy
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   workflow_dispatch:
 jobs:
-  build:
+  checkout:
+    name: "Checkout Ansible playbooks"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Run a one-line script
-        run: echo Hello, world!
+        with:
+          repository: 'dreikanter/feeder-ansible'
+          ref: 'master'
+          path: 'feeder-ansible'
